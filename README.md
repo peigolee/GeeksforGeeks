@@ -1,11 +1,11 @@
 # GeeksforGeeks
 
-Point *t1, *t2;   // No constructor call
-t1 = new Point(10, 15);  // Normal constructor call
-t2 = new Point(*t1);   // Copy constructor call 
-Point t3 = *t1;  // Copy Constructor call
-Point t4;   // Normal Constructor call
-t4 = t3;   // Assignment operator call 
+    Point *t1, *t2;   // No constructor call
+    t1 = new Point(10, 15);  // Normal constructor call
+    t2 = new Point(*t1);   // Copy constructor call 
+    Point t3 = *t1;  // Copy Constructor call
+    Point t4;   // Normal Constructor call
+    t4 = t3;   // Assignment operator call 
 
 
 ---------------------
