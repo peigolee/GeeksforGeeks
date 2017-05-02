@@ -76,44 +76,44 @@ Since there is no copy constructor, the compiler creates a copy constructor. The
 ------------------
 
 Objects must be passed by reference in copy constructors. Compiler checks for this and produces compiler error if not passed by reference. The following program compiles fine and produces output as 10.
-#include <iostream >
-using namespace std;
-class Point {
-    int x;
-public:
-    Point(int x) { this->x = x; }
-    Point(const Point &p) { x = p.x;}
-    int getX() { return x; }
-};
+        #include <iostream >
+        using namespace std;
+        class Point {
+            int x;
+        public:
+            Point(int x) { this->x = x; }
+            Point(const Point &p) { x = p.x;}
+            int getX() { return x; }
+        };
 
-int main()
-{
-   Point p1(10);
-   Point p2 = p1;
-   cout << p2.getX();
-   return 0;
-}
+        int main()
+        {
+           Point p1(10);
+           Point p2 = p1;
+           cout << p2.getX();
+           return 0;
+        }
 The reason is simple, if we don't pass by reference, then argument p1 will be copied to p. So there will be a copy constructor call to call the copy constructor, which is not possible.
 
 
 
-#include<iostream>
-using namespace std;
-class Point {
-    int x;
-public:
-    Point(int x) { this->x = x; }
-    Point(const Point p) { x = p.x;}
-    int getX() { return x; }
-};
+        #include<iostream>
+        using namespace std;
+        class Point {
+            int x;
+        public:
+            Point(int x) { this->x = x; }
+            Point(const Point p) { x = p.x;}
+            int getX() { return x; }
+        };
 
-int main()
-{
-   Point p1(10);
-   Point p2 = p1;
-   cout << p2.getX();
-   return 0;
-}
+        int main()
+        {
+           Point p1(10);
+           Point p2 = p1;
+           cout << p2.getX();
+           return 0;
+        }
 
 Compiler Error: p must be passed by reference
 
@@ -129,30 +129,30 @@ http://www.geeksforgeeks.org/when-do-we-use-initializer-list-in-c/
 
 If a class has a constructor which can be called with a single argument, then this constructor becomes conversion constructor because such a constructor allows automatic conversion to the class being constructed. A conversion constructor can be called anywhere when the type of single argument is assigned to the object. The output of the given program is
 
-#include <iostream>
-using namespace std;
-class Test
-{
-private:
-    int x;
-public:
-    Test(int i)
+    #include <iostream>
+    using namespace std;
+    class Test
     {
-        x = i;
-        cout << "Called" << endl;
+    private:
+        int x;
+    public:
+        Test(int i)
+        {
+            x = i;
+            cout << "Called" << endl;
+        }
+    };
+
+    int main()
+    {
+        Test t(20);
+        t = 30; // conversion constructor is called here.
+        return 0;
     }
-};
-
-int main()
-{
-    Test t(20);
-    t = 30; // conversion constructor is called here.
-    return 0;
-}
 
 
-Called
-Called
+    Called
+    Called
 
 
 -------------------
