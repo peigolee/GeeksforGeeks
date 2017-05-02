@@ -10,25 +10,25 @@
 
 ---------------------
 
-#include <iostream>
-using namespace std;
- 
-class Point
-{
-    int x, y;
-public:
-   Point(const Point &p) { x = p.x; y = p.y; }
-   int getX() { return x; }
-   int getY() { return y; }
-};
- 
-int main()
-{
-    Point p1;
-    Point p2 = p1;
-    cout << "x = " << p2.getX() << " y = " << p2.getY();
-    return 0;
-}
+        #include <iostream>
+        using namespace std;
+
+        class Point
+        {
+            int x, y;
+        public:
+           Point(const Point &p) { x = p.x; y = p.y; }
+           int getX() { return x; }
+           int getY() { return y; }
+        };
+
+        int main()
+        {
+            Point p1;
+            Point p2 = p1;
+            cout << "x = " << p2.getX() << " y = " << p2.getY();
+            return 0;
+        }
 
 
 There is compiler error in line "Point p1;". The class Point doesn't have a constructor without any parameter. If we write any constructor, then compiler doesn't create the default constructor. It is not true other way, i.e., if we write a default or parameterized constructor, then compiler creates a copy constructor. See the next question.
@@ -41,34 +41,34 @@ http://en.cppreference.com/w/cpp/utility/initializer_list
 
 --------------------
 
-#include<iostream>
-#include<string.h>
-using namespace std;
+    #include<iostream>
+    #include<string.h>
+    using namespace std;
 
-class String
-{
-    char *str;
-public:
-     String(const char *s);
-     void change(int index, char c) { str[index] = c; }
-     char *get() { return str; }
-};
+    class String
+    {
+        char *str;
+    public:
+         String(const char *s);
+         void change(int index, char c) { str[index] = c; }
+         char *get() { return str; }
+    };
 
-String::String(const char *s)
-{
-    int l = strlen(s);
-    str = new char[l+1];
-    strcpy(str, s);
-}
+    String::String(const char *s)
+    {
+        int l = strlen(s);
+        str = new char[l+1];
+        strcpy(str, s);
+    }
 
-int main()
-{
-   String s1("geeksQuiz");
-   String s2 = s1;
-   s1.change(0, 'G');
-   cout << s1.get() << " ";
-   cout << s2.get();
-}
+    int main()
+    {
+       String s1("geeksQuiz");
+       String s2 = s1;
+       s1.change(0, 'G');
+       cout << s1.get() << " ";
+       cout << s2.get();
+    }
 
 Question 11 Explanation: 
 Since there is no copy constructor, the compiler creates a copy constructor. The compiler created copy constructor does shallow copy in line " String s2 = s1;" So str pointers of both s1 and s2 point to the same location. There must be a user defined copy constructor in classes with pointers ot dynamic memory allocation.
